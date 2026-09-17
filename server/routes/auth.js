@@ -14,6 +14,7 @@ const { loginLimiter } = require('../middleware/rateLimiters');
 const router = express.Router();
 
 router.post('/login', loginLimiter, authController.login);
+router.post('/password', requireAdmin, loginLimiter, authController.changePassword);
 router.get('/me', requireAdmin, authController.me);
 
 module.exports = router;

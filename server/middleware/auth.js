@@ -5,10 +5,12 @@
  * The token is sent as:  Authorization: Bearer <token>
  */
 
+const { createHmac } = require('node:crypto');
+const { pool } = require('../database/connection');
 const jwt = require('jsonwebtoken');
 const config = require('../config');
 
-function requireAdmin(req, res, next) {
+async function requireAdmin(req, res, next) {
   const header = req.headers.authorization || '';
   const token = header.startsWith('Bearer ') ? header.slice(7).trim() : null;
 
@@ -21,9 +23,14 @@ function requireAdmin(req, res, next) {
 
   try {
     const payload = jwt.verify(token, config.jwt.secret);
+    const [rows] = await pool.query('SELECT password_hash FROM admin_users WHERE id = ?', [payload.sub]);
+    if (!rows[0] || payload.pv !== passwordVersion(rows[0].password_hash)) {
+      return res.status(401).json({ success: false, message: 'Please log in again. Your session is no longer valid.' });
+    }
     req.admin = { id: payload.sub, username: payload.username };
     return next();
   } catch (err) {
+    if (!['TokenExpiredError', 'JsonWebTokenError', 'NotBeforeError'].includes(err.name)) return next(err);
     const expired = err.name === 'TokenExpiredError';
     return res.status(401).json({
       success: false,
@@ -34,4 +41,7 @@ function requireAdmin(req, res, next) {
   }
 }
 
-module.exports = { requireAdmin };
+function passwordVersion(hash) {
+  return createHmac('sha256', config.jwt.secret).update(hash).digest('hex');
+}
+module.exports = { requireAdmin, passwordVersion };

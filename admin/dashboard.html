@@ -23,6 +23,7 @@
         <span>ICT Leads Admin</span>
       </div>
       <nav>
+        <a href="/admin/dashboard.html#passwordSettings">Change password</a>
         <a href="/admin/dashboard.html" data-nav="dashboard">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
           Dashboard
@@ -62,6 +63,19 @@
       </header>
 
       <div class="content">
+
+
+        <section class="card" id="passwordSettings" aria-labelledby="passwordTitle">
+          <div class="card-head"><h2 id="passwordTitle">Change admin password</h2></div>
+          <p>Use at least 12 characters. You will be signed out on all devices after changing your password.</p>
+          <form id="passwordForm" style="max-width:480px;margin-top:16px">
+            <div class="field"><label for="currentPassword">Current password</label><input id="currentPassword" type="password" autocomplete="current-password" required></div>
+            <div class="field"><label for="newPassword">New password</label><input id="newPassword" type="password" autocomplete="new-password" minlength="12" maxlength="72" required></div>
+            <div class="field"><label for="confirmPassword">Confirm new password</label><input id="confirmPassword" type="password" autocomplete="new-password" minlength="12" maxlength="72" required></div>
+            <p id="passwordMessage" role="status" aria-live="polite"></p>
+            <button class="btn btn-primary" id="changePasswordBtn" type="submit">Change password</button>
+          </form>
+        </section>
 
         <!-- Stat cards -->
         <div class="stats-grid">
@@ -163,5 +177,6 @@
 
   <script src="/admin/js/admin.js"></script>
   <script src="/admin/js/dashboard.js"></script>
+  <script src="/admin/js/password.js"></script>
 </body>
 </html>
