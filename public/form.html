@@ -16,16 +16,10 @@
     <!-- ================= FORM CARD ================= -->
     <section class="card" id="formCard" aria-labelledby="formTitle">
       <header class="card-header">
-        <div class="brand" aria-hidden="true">
-          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="4" width="20" height="13" rx="2"></rect>
-            <path d="M8 21h8"></path>
-            <path d="M12 17v4"></path>
-            <path d="m9 9-1.5 2L9 13"></path>
-            <path d="m15 9 1.5 2L15 13"></path>
-            <path d="m13 8-2 6"></path>
-          </svg>
-          <span>ICT Skills Registration</span>
+        <div class="brand-identity">
+          <img class="brand-logo" src="/images/it-giant-logo.png" alt="The IT Giant" width="2048" height="2048" fetchpriority="high">
+          <span class="brand-name">THE IT GIANT</span>
+          <span class="brand-tagline">ICT Skills Registration</span>
         </div>
 
         <h1 id="formTitle">Start Your ICT Journey Today!</h1>
@@ -160,6 +154,13 @@
       <button type="button" class="ghost-btn" id="resetBtn">Submit Another Response</button>
     </section>
 
+    <section class="partners-panel" aria-labelledby="partnersTitle">
+      <h2 id="partnersTitle">Our partners</h2>
+      <div class="partners-scroll" tabindex="0" role="region" aria-label="Partner logos; scroll horizontally on smaller screens">
+        <img src="/images/partners.png" alt="Cisco Learning Partner, Oracle, Workforce Development, CompTIA, Microsoft Learning Partner and Pearson VUE" width="5000" height="1250" loading="lazy">
+      </div>
+      <p class="partners-hint">Swipe to view all partners</p>
+    </section>
   </main>
 
   <script src="/js/form.js"></script>
