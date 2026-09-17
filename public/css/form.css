@@ -37,7 +37,9 @@ body {
   background:
     radial-gradient(1100px 520px at 85% -10%, rgba(59, 130, 246, 0.35), transparent 60%),
     radial-gradient(900px 500px at -10% 110%, rgba(37, 99, 235, 0.28), transparent 55%),
-    linear-gradient(140deg, var(--bg-1) 0%, var(--bg-2) 55%, #17306e 100%);
+    linear-gradient(140deg, rgba(15, 23, 42, .78) 0%, rgba(30, 58, 138, .72) 55%, rgba(23, 48, 110, .76) 100%),
+    url('/images/building-background.png') center center / cover no-repeat;
+  background-color: var(--bg-1);
   background-attachment: fixed;
   min-height: 100vh;
 }
