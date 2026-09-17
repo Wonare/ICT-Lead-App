@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | ICT Lead Form</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232563eb'/%3E%3Ctext x='32' y='43' font-size='30' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'%3EICT%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/admin/css/admin.css">
+</head>
+<body class="login-page">
+
+  <div class="login-card">
+    <div class="login-brand">
+      <div class="logo" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="13" rx="2"></rect>
+          <path d="M8 21h8"></path><path d="M12 17v4"></path>
+          <path d="m9 9-1.5 2L9 13"></path><path d="m15 9 1.5 2L15 13"></path><path d="m13 8-2 6"></path>
+        </svg>
+      </div>
+    </div>
+
+    <h1>Admin Panel</h1>
+    <p class="login-sub">Sign in to manage ICT course leads</p>
+
+    <div class="login-error" id="loginError" role="alert"></div>
+
+    <form id="loginForm" novalidate>
+      <div class="field">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" autocomplete="username"
+               placeholder="Enter your username" maxlength="60" required>
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" autocomplete="current-password"
+               placeholder="Enter your password" maxlength="120" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary login-btn" id="loginBtn">
+        <span class="spinner-sm" aria-hidden="true"></span>
+        <span id="loginLabel">Sign In</span>
+      </button>
+    </form>
+
+    <a class="login-back" href="/form.html">&larr; Back to registration form</a>
+  </div>
+
+  <script src="/admin/js/admin.js"></script>
+  <script src="/admin/js/login.js"></script>
+</body>
+</html>

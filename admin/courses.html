@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses | ICT Lead Form Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232563eb'/%3E%3Ctext x='32' y='43' font-size='30' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'%3EICT%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/admin/css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="logo" aria-hidden="true">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="13" rx="2"></rect><path d="M8 21h8"></path><path d="M12 17v4"></path>
+            <path d="m9 9-1.5 2L9 13"></path><path d="m15 9 1.5 2L15 13"></path><path d="m13 8-2 6"></path>
+          </svg>
+        </span>
+        <span>ICT Leads Admin</span>
+      </div>
+      <nav>
+        <a href="/admin/dashboard.html" data-nav="dashboard">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+          Dashboard
+        </a>
+        <a href="/admin/leads.html" data-nav="leads">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Leads
+        </a>
+        <a href="/admin/courses.html" data-nav="courses">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          Courses
+        </a>
+        <a href="/form.html" target="_blank" rel="noopener">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          View Form
+        </a>
+      </nav>
+      <div class="sidebar-foot">
+        <button type="button" class="logout-btn" data-logout>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Logout
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="main">
+      <header class="topbar">
+        <div>
+          <div class="page-title">Course Management</div>
+          <div class="page-sub">Only <strong>Active</strong> courses appear in the public form dropdown</div>
+        </div>
+        <div class="who">
+          <span id="adminName">Admin</span>
+          <span class="avatar" id="adminAvatar">A</span>
+        </div>
+      </header>
+
+      <div class="content">
+        <div class="card">
+          <div class="card-head">
+            <h2>All Courses <span class="muted" id="courseCount"></span></h2>
+            <button type="button" class="btn btn-primary btn-sm" id="addCourseBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add Course
+            </button>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Course Name</th>
+                  <th>Description</th>
+                  <th>Status</th>
+                  <th>Created</th>
+                  <th style="text-align:right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="coursesBody">
+                <tr class="empty-row"><td colspan="5">Loading&hellip;</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== Add / edit course modal ===================== -->
+  <div class="modal-overlay" id="courseModal" hidden>
+    <div class="modal" style="max-width:520px;" role="dialog" aria-modal="true" aria-labelledby="courseModalTitle">
+      <div class="modal-head">
+        <h3 id="courseModalTitle">Add Course</h3>
+        <button type="button" class="modal-close" data-close aria-label="Close">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <form id="courseForm" novalidate>
+          <div class="field">
+            <label for="courseName">Course Name <span style="color:var(--danger);">*</span></label>
+            <input type="text" id="courseName" maxlength="120" placeholder="e.g. Web Development" required>
+            <p class="field-error" id="err-courseName"></p>
+          </div>
+          <div class="field">
+            <label for="courseDescription">Description <span style="color:var(--ink-faint); font-weight:400;">(optional)</span></label>
+            <textarea id="courseDescription" maxlength="500" placeholder="Short description of what students will learn&hellip;"></textarea>
+            <p class="field-error" id="err-courseDescription"></p>
+          </div>
+          <div class="field">
+            <label for="courseStatus">Status</label>
+            <select id="courseStatus">
+              <option value="Active">Active - visible on the form</option>
+              <option value="Inactive">Inactive - hidden from the form</option>
+            </select>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-foot">
+        <button type="button" class="btn btn-ghost" data-close>Cancel</button>
+        <button type="button" class="btn btn-primary" id="saveCourseBtn">
+          <span class="spinner-sm" aria-hidden="true"></span>
+          Save Course
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== Delete confirmation modal ===================== -->
+  <div class="modal-overlay" id="confirmModal" hidden>
+    <div class="modal" style="max-width:420px;" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <div class="modal-head">
+        <h3 id="confirmTitle">Delete this course?</h3>
+        <button type="button" class="modal-close" data-close aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="confirmText" style="margin:0; color:var(--ink-soft);">This action cannot be undone.</p>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn btn-ghost" data-close>Cancel</button>
+        <button type="button" class="btn btn-danger-solid" id="confirmDeleteBtn">Yes, Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-wrap"></div>
+
+  <script src="/admin/js/admin.js"></script>
+  <script src="/admin/js/courses.js"></script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start Your ICT Journey Today! | ICT Course Registration</title>
+  <meta name="description" content="Register your interest in practical ICT courses - Web Development, Python, JavaScript, Graphics Design, Cybersecurity and more.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232563eb'/%3E%3Ctext x='32' y='43' font-size='30' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'%3EICT%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/css/form.css">
+</head>
+<body>
+
+  <main class="page">
+
+    <!-- ================= FORM CARD ================= -->
+    <section class="card" id="formCard" aria-labelledby="formTitle">
+      <header class="card-header">
+        <div class="brand" aria-hidden="true">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="13" rx="2"></rect>
+            <path d="M8 21h8"></path>
+            <path d="M12 17v4"></path>
+            <path d="m9 9-1.5 2L9 13"></path>
+            <path d="m15 9 1.5 2L15 13"></path>
+            <path d="m13 8-2 6"></path>
+          </svg>
+          <span>ICT Skills Registration</span>
+        </div>
+
+        <h1 id="formTitle">Start Your ICT Journey Today!</h1>
+        <p class="subtitle">
+          Interested in learning practical ICT skills? Fill out the form and
+          we&rsquo;ll contact you with course details and how to get started.
+        </p>
+      </header>
+
+      <!-- General form-level alert (server errors etc.) -->
+      <div class="alert" id="formAlert" role="alert" hidden></div>
+
+      <form id="leadForm" novalidate>
+
+        <!-- Full Name -->
+        <div class="field">
+          <label for="fullName">Full Name <span class="req" aria-hidden="true">*</span></label>
+          <input type="text" id="fullName" name="full_name" placeholder="e.g. John Doe"
+                 autocomplete="name" maxlength="120" required>
+          <p class="error-msg" id="err-full_name" aria-live="polite"></p>
+        </div>
+
+        <!-- Phone + Email -->
+        <div class="field-row">
+          <div class="field">
+            <label for="phone">Phone/WhatsApp Number <span class="req" aria-hidden="true">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="e.g. 08012345678"
+                   autocomplete="tel" maxlength="20" required>
+            <p class="error-msg" id="err-phone" aria-live="polite"></p>
+          </div>
+
+          <div class="field">
+            <label for="email">Email Address <span class="req" aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" placeholder="e.g. john@example.com"
+                   autocomplete="email" maxlength="190" required>
+            <p class="error-msg" id="err-email" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <!-- Course (options loaded from the database via /api/courses) -->
+        <div class="field">
+          <label for="course">Which ICT course are you interested in? <span class="req" aria-hidden="true">*</span></label>
+          <select id="course" name="course" required>
+            <option value="" selected disabled>Loading courses&hellip;</option>
+          </select>
+          <p class="error-msg" id="err-course" aria-live="polite"></p>
+        </div>
+
+        <!-- Learning Mode -->
+        <fieldset class="field radio-field">
+          <legend>Preferred Learning Mode <span class="req" aria-hidden="true">*</span></legend>
+          <div class="radio-group" id="learningModeGroup">
+            <label class="radio-pill">
+              <input type="radio" name="learning_mode" value="Physical">
+              <span class="pill-label">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>
+                Physical
+              </span>
+            </label>
+            <label class="radio-pill">
+              <input type="radio" name="learning_mode" value="Online">
+              <span class="pill-label">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+                Online
+              </span>
+            </label>
+          </div>
+          <p class="error-msg" id="err-learning_mode" aria-live="polite"></p>
+        </fieldset>
+
+        <!-- Communication + Referral -->
+        <div class="field-row">
+          <div class="field">
+            <label for="communicationMethod">Preferred Means of Communication <span class="req" aria-hidden="true">*</span></label>
+            <select id="communicationMethod" name="communication_method" required>
+              <option value="" selected disabled>Select an option&hellip;</option>
+              <option value="WhatsApp">WhatsApp</option>
+              <option value="Phone Call">Phone Call</option>
+              <option value="Email">Email</option>
+              <option value="SMS">SMS</option>
+            </select>
+            <p class="error-msg" id="err-communication_method" aria-live="polite"></p>
+          </div>
+
+          <div class="field">
+            <label for="referralSource">How Did You Hear About Us? <span class="req" aria-hidden="true">*</span></label>
+            <select id="referralSource" name="referral_source" required>
+              <option value="" selected disabled>Select an option&hellip;</option>
+              <option value="Facebook">Facebook</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Google">Google</option>
+              <option value="Friend or Family">Friend or Family</option>
+              <option value="WhatsApp">WhatsApp</option>
+              <option value="Other">Other</option>
+            </select>
+            <p class="error-msg" id="err-referral_source" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <!-- Referral "Other" - shown dynamically -->
+        <div class="field" id="referralOtherField" hidden>
+          <label for="referralOther">Please specify <span class="req" aria-hidden="true">*</span></label>
+          <input type="text" id="referralOther" name="referral_other"
+                 placeholder="Tell us where you heard about us" maxlength="150">
+          <p class="error-msg" id="err-referral_other" aria-live="polite"></p>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <span class="btn-label" id="submitLabel">Get Course Details</span>
+          <span class="spinner" aria-hidden="true"></span>
+        </button>
+
+        <p class="privacy-note">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Your information is kept private and will only be used to contact you about our ICT courses.
+        </p>
+      </form>
+    </section>
+
+    <!-- ================= SUCCESS CARD ================= -->
+    <section class="card success-card" id="successCard" hidden aria-labelledby="successTitle">
+      <div class="success-icon" aria-hidden="true">
+        <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6 9 17l-5-5"></path>
+        </svg>
+      </div>
+      <h2 id="successTitle">Thank you! &#127881;</h2>
+      <p class="success-text">
+        Your details have been received. We&rsquo;ll contact you shortly with more
+        information about your selected ICT course.
+      </p>
+      <button type="button" class="ghost-btn" id="resetBtn">Submit Another Response</button>
+    </section>
+
+  </main>
+
+  <script src="/js/form.js"></script>
+</body>
+</html>

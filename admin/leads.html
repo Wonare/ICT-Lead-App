@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leads | ICT Lead Form Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232563eb'/%3E%3Ctext x='32' y='43' font-size='30' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'%3EICT%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/admin/css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="logo" aria-hidden="true">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="13" rx="2"></rect><path d="M8 21h8"></path><path d="M12 17v4"></path>
+            <path d="m9 9-1.5 2L9 13"></path><path d="m15 9 1.5 2L15 13"></path><path d="m13 8-2 6"></path>
+          </svg>
+        </span>
+        <span>ICT Leads Admin</span>
+      </div>
+      <nav>
+        <a href="/admin/dashboard.html" data-nav="dashboard">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+          Dashboard
+        </a>
+        <a href="/admin/leads.html" data-nav="leads">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Leads
+        </a>
+        <a href="/admin/courses.html" data-nav="courses">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          Courses
+        </a>
+        <a href="/form.html" target="_blank" rel="noopener">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          View Form
+        </a>
+      </nav>
+      <div class="sidebar-foot">
+        <button type="button" class="logout-btn" data-logout>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Logout
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="main">
+      <header class="topbar">
+        <div>
+          <div class="page-title">Leads</div>
+          <div class="page-sub">Every submission from the public registration form</div>
+        </div>
+        <div class="who">
+          <span id="adminName">Admin</span>
+          <span class="avatar" id="adminAvatar">A</span>
+        </div>
+      </header>
+
+      <div class="content">
+        <div class="card">
+          <div class="card-head">
+            <div class="filters">
+              <input type="text" id="searchInput" placeholder="Search name, email or phone&hellip;" aria-label="Search leads">
+              <select id="statusFilter" aria-label="Filter by status">
+                <option value="">All statuses</option>
+                <option value="New">New</option>
+                <option value="Contacted">Contacted</option>
+                <option value="Enrolled">Enrolled</option>
+                <option value="Not Interested">Not Interested</option>
+                <option value="Closed">Closed</option>
+              </select>
+              <select id="courseFilter" aria-label="Filter by course">
+                <option value="">All courses</option>
+              </select>
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <button type="button" class="btn btn-ghost btn-sm" id="exportBtn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Export CSV
+              </button>
+              <button type="button" class="btn btn-ghost btn-sm" id="refreshBtn">Refresh</button>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Phone</th>
+                  <th>Course</th>
+                  <th>Mode</th>
+                  <th>Status</th>
+                  <th>Submitted</th>
+                  <th style="text-align:right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="leadsBody">
+                <tr class="empty-row"><td colspan="7">Loading&hellip;</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pagination">
+            <div class="pg-info" id="pgInfo">&mdash;</div>
+            <div class="pg-btns">
+              <button type="button" class="btn btn-ghost btn-sm" id="prevBtn" disabled>&larr; Prev</button>
+              <span class="pg-current" id="pgCurrent">1 / 1</span>
+              <button type="button" class="btn btn-ghost btn-sm" id="nextBtn" disabled>Next &rarr;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== Lead detail / edit modal ===================== -->
+  <div class="modal-overlay" id="leadModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="leadModalTitle">
+      <div class="modal-head">
+        <h3 id="leadModalTitle">Lead Details</h3>
+        <button type="button" class="modal-close" data-close aria-label="Close">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="detail-grid" id="leadDetail"><!-- filled by JS --></div>
+
+        <div class="detail-divider" style="border-top:1px dashed var(--line); margin:18px 0;"></div>
+
+        <form id="leadEditForm" novalidate>
+          <div class="form-grid">
+            <div class="field span-2">
+              <label for="editStatus">Lead Status</label>
+              <select id="editStatus">
+                <option value="New">New</option>
+                <option value="Contacted">Contacted</option>
+                <option value="Enrolled">Enrolled</option>
+                <option value="Not Interested">Not Interested</option>
+                <option value="Closed">Closed</option>
+              </select>
+            </div>
+            <div class="field span-2">
+              <label for="editNotes">Admin Notes</label>
+              <textarea id="editNotes" maxlength="2000" placeholder="Internal notes about this lead (not visible to the applicant)&hellip;"></textarea>
+              <p class="field-error" id="err-editNotes"></p>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-foot">
+        <button type="button" class="btn btn-danger" id="deleteLeadBtn">Delete Lead</button>
+        <button type="button" class="btn btn-ghost" data-close>Cancel</button>
+        <button type="button" class="btn btn-primary" id="saveLeadBtn">
+          <span class="spinner-sm" aria-hidden="true"></span>
+          Save Changes
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== Delete confirmation modal ===================== -->
+  <div class="modal-overlay" id="confirmModal" hidden>
+    <div class="modal" style="max-width:420px;" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <div class="modal-head">
+        <h3 id="confirmTitle">Delete this lead?</h3>
+        <button type="button" class="modal-close" data-close aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="confirmText" style="margin:0; color:var(--ink-soft);">This action cannot be undone.</p>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn btn-ghost" data-close>Cancel</button>
+        <button type="button" class="btn btn-danger-solid" id="confirmDeleteBtn">Yes, Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-wrap"></div>
+
+  <script src="/admin/js/admin.js"></script>
+  <script src="/admin/js/leads.js"></script>
+</body>
+</html>

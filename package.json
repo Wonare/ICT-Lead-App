@@ -1,0 +1,36 @@
+{
+  "name": "ict-lead-form",
+  "version": "1.0.0",
+  "description": "Standalone ICT Lead Registration Form page with Node.js + Express backend, MySQL storage and a protected admin panel.",
+  "main": "server/server.js",
+  "scripts": {
+    "setup": "node server/database/init.js",
+    "start": "node server/server.js",
+    "demo": "node demo-server.js",
+    "dev": "node --watch server/server.js",
+    "test:form": "node tests/form.e2e.js"
+  },
+  "keywords": [
+    "ict",
+    "lead-form",
+    "express",
+    "mysql",
+    "admin-panel"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.1",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.11.3"
+  },
+  "devDependencies": {
+    "jsdom": "^24.1.3"
+  }
+}
