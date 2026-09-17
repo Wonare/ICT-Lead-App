@@ -43,6 +43,19 @@ const config = {
   rateLimit: {
     leads: toInt(process.env.LEAD_RATE_LIMIT, 30),
     login: toInt(process.env.LOGIN_RATE_LIMIT, 20)
+  },
+
+  security: {
+    /**
+     * Which origins may embed the app in an <iframe> (CSP frame-ancestors).
+     *
+     *   unset / 'self' -> only our own pages (the correct production value)
+     *   '*'            -> any parent frame
+     *
+     * Leave this at 'self' in production. Relax it only for local preview
+     * setups where a dev proxy renders the app inside an iframe.
+     */
+    frameAncestors: process.env.FRAME_ANCESTORS || "'self'"
   }
 };
 

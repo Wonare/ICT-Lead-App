@@ -3,6 +3,12 @@ require('dotenv').config();
 const assert = require('node:assert/strict');
 const { JSDOM, VirtualConsole } = require('jsdom');
 const base = process.env.TEST_BASE_URL || 'http://127.0.0.1:3000';
+// Same fallbacks as form.e2e.js. Without these, process.env.ADMIN_DEFAULT_PASSWORD
+// is undefined on a fresh clone (no .env), JSON.stringify drops the key, and the
+// API answers 400 "Please enter your username and password" instead of a clear
+// failure - which is a confusing way for the suite to break.
+const ADMIN_USER = process.env.ADMIN_USERNAME || 'admin';
+const ADMIN_PASS = process.env.ADMIN_DEFAULT_PASSWORD || 'Admin@12345';
 let token, courseId, leadId;
 async function request(path, method = 'GET', body, authenticated = true) {
   const res = await fetch(base + path, { method, headers: {
@@ -18,8 +24,9 @@ async function waitFor(fn) {
 async function main() {
   assert.equal((await request('/api/admin/leads')).status, 401);
   assert.equal((await request('/api/admin/auth/login', 'POST', {username: 'admin', password: 'wrong'})).status, 401);
-  const login = await request('/api/admin/auth/login', 'POST', {username: process.env.ADMIN_USERNAME || 'admin', password: process.env.ADMIN_DEFAULT_PASSWORD});
-  assert.equal(login.status, 200); token = login.json.data.token;
+  const login = await request('/api/admin/auth/login', 'POST', {username: ADMIN_USER, password: ADMIN_PASS});
+  assert.equal(login.status, 200, 'admin login failed - is ADMIN_DEFAULT_PASSWORD correct? response: ' + JSON.stringify(login.json));
+  token = login.json.data.token;
   assert.equal((await request('/api/admin/auth/me')).status, 200);
   const name = 'Test Course ' + Date.now();
   let result = await request('/api/admin/courses', 'POST', {course_name: name, description: 'Workflow test'});

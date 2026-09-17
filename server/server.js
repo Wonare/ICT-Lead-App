@@ -35,6 +35,11 @@ app.disable('x-powered-by');
 // Security headers (CSP allows our own files only; inline styles are permitted
 // because admin chart bars are sized via the style attribute).
 // ---------------------------------------------------------------------------
+// frameAncestors comes from config (FRAME_ANCESTORS env var) and defaults to
+// 'self'. The legacy X-Frame-Options header is only sent while framing is
+// restricted, so it can never contradict a deliberately relaxed CSP.
+const allowExternalFraming = config.security.frameAncestors !== "'self'";
+
 app.use(
   helmet({
     contentSecurityPolicy: {
@@ -46,12 +51,13 @@ app.use(
         connectSrc: ["'self'"],
         fontSrc: ["'self'"],
         objectSrc: ["'none'"],
-        frameAncestors: ["'self'"],
+        frameAncestors: [config.security.frameAncestors],
         baseUri: ["'self'"],
         formAction: ["'self'"],
         upgradeInsecureRequests: config.env === 'production' ? [] : null
       }
-    }
+    },
+    xFrameOptions: allowExternalFraming ? false : { action: 'SAMEORIGIN' }
   })
 );
 
