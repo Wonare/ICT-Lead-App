@@ -421,10 +421,5 @@ select.invalid:focus {
 .brand-logo { display: block; width: 132px; height: 132px; object-fit: contain; }
 .brand-name { color: #151515; font-size: 17px; font-weight: 800; letter-spacing: .12em; }
 .brand-tagline { margin-top: 7px; color: var(--ink-soft); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
-.partners-panel { width: 100%; max-width: 960px; padding: 22px 18px 12px; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); text-align: center; }
-.partners-panel h2 { margin: 0; font-size: 12px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .14em; }
-.partners-scroll { overflow-x: auto; border-radius: 6px; }
-.partners-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.partners-scroll img { display: block; width: 100%; min-width: 720px; height: auto; }
-.partners-hint { display: none; margin: 4px 0 8px; color: var(--ink-soft); font-size: 12px; }
-@media (max-width: 790px) { .partners-hint { display: block; } }
+.partners-panel { width: 100%; max-width: 480px; margin: 16px auto 0; }
+.partners-panel img { display: block; width: 100%; height: auto; }
