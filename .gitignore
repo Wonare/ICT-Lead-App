@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+data/
+
+# Environment secrets - never commit
+.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+START-HERE.md
+
+.env.*
+!.env.example
+*.sqlite*
+deploy/
+*.zip
+.neon
