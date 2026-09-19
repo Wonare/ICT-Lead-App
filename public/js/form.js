@@ -46,6 +46,10 @@
   var referralOtherField = document.getElementById('referralOtherField');
   var courseSelect = document.getElementById('course');
 
+  document.getElementById('onlineComingSoon').addEventListener('click', function () {
+    document.getElementById('onlineNotice').hidden = false;
+  });
+
   var isSubmitting = false;
 
   var fields = {

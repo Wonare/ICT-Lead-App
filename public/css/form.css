@@ -425,3 +425,8 @@ select.invalid:focus {
 .brand-tagline { margin-top: 7px; color: var(--ink-soft); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
 .partners-panel { width: 100%; max-width: 480px; margin: 16px auto 0; }
 .partners-panel img { display: block; width: 100%; height: auto; }
+
+.online-unavailable { padding: 0; border: 0; background: none; font: inherit; }
+.online-unavailable .pill-label { background: #f1f5f9; border-color: #d1d5db; color: #6b7280; cursor: not-allowed; }
+.online-unavailable:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: var(--radius-sm); }
+.coming-soon-note { margin: 10px 0 0; color: var(--ink-soft); font-size: 13px; line-height: 1.5; }

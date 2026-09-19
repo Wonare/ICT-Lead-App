@@ -79,14 +79,14 @@
                 Physical
               </span>
             </label>
-            <label class="radio-pill">
-              <input type="radio" name="learning_mode" value="Online">
+            <button type="button" class="radio-pill online-unavailable" id="onlineComingSoon" aria-disabled="true" aria-describedby="onlineNotice">
               <span class="pill-label">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
                 Online
               </span>
-            </label>
+            </button>
           </div>
+          <p id="onlineNotice" class="coming-soon-note" role="status" hidden>Online learning is coming soon. Please choose Physical for now.</p>
           <p class="error-msg" id="err-learning_mode" aria-live="polite"></p>
         </fieldset>
 
